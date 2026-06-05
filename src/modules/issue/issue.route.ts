@@ -3,6 +3,6 @@ import { issueController } from "./issue.controller";
 
 const router = Router();
 
-router.get("/", issueController.getAllIssues);
+router.post("/", issueController.getAllIssues);
 
 export const issueRoute = router;

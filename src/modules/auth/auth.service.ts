@@ -43,11 +43,13 @@ const loginUserIntoDB = async (payload: IUser) => {
     role: user.role,
   };
 
-  const accessToken = jwt.sign(jwtpayload, config.secret as string, {
+  const token = jwt.sign(jwtpayload, config.secret as string, {
     expiresIn: "1d",
   });
 
-  return { accessToken };
+  delete user.password;
+
+  return { token, user };
 };
 
 export const userService = {
