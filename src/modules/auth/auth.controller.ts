@@ -1,10 +1,12 @@
 import type { Request, Response } from "express";
 import { userService } from "./auth.service";
 
-const userLogin = (req: Request, res: Response) => {
+const userLogin = async (req: Request, res: Response) => {
+  const result = await userService.loginUserIntoDB(req.body);
   res.status(200).json({
     success: true,
     message: "User Logged in Successfully",
+    data: result,
   });
 };
 
